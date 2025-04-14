@@ -26,8 +26,9 @@ public class AnswerController {
         return ResponseEntity.ok(service.create(answer));
     }
     
-    @GetMapping("/questionId/{id}")
-    public List<AnswerEntity> readByQuestionId(@PathVariable Long questionId) {
-        return service.readByQuestionId(questionId);
+    @GetMapping("/questionId/{questionId}")
+    public ResponseEntity<List<AnswerEntity>> readByQuestionId(@PathVariable Long questionId) {
+        List<AnswerEntity> answers = service.readByQuestionId(questionId);
+        return ResponseEntity.ok(answers);
     }
 }
