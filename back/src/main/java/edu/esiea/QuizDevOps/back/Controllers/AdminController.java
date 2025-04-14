@@ -24,7 +24,7 @@ public class AdminController {
         return ResponseEntity.ok(service.create(admin));
     }
     
-    @GetMapping("/id/{id")
+    @GetMapping("/id/{id}")
     public ResponseEntity<AdminEntity> readById(@PathVariable Long id) {
         return ResponseEntity.ok(service.readById(id));
     }
