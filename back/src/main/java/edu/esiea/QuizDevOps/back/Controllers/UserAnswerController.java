@@ -17,12 +17,12 @@ public class UserAnswerController {
     @Autowired
     private UserAnswerService userAnswerService;
 
-    @PostMapping("/submit")
+    @PostMapping("/submit/{userId}/{questionId}/{answerId}")
     public ResponseEntity<UserAnswerEntity> submitAnswer(@PathVariable Long userId, @PathVariable Long questionId, @PathVariable Long answerId) {
         return ResponseEntity.ok(userAnswerService.saveUserAnswer(userId, questionId, answerId));
     }
 
-    @GetMapping("/score")
+    @GetMapping("/score/{userId}/{quizId}")
     public ResponseEntity<Integer> getScore(@PathVariable Long userId, @PathVariable Long quizId) {
         return ResponseEntity.ok(userAnswerService.calculateScore(userId, quizId));
     }
