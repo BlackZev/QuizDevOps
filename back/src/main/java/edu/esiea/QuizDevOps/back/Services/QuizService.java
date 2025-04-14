@@ -34,7 +34,6 @@ public class QuizService {
     	quiz.setName(updateQuiz.getName());
     	quiz.setTheme(updateQuiz.getTheme());
     	quiz.setCreator(updateQuiz.getCreator());
-    	quiz.setQuestions(updateQuiz.getQuestions());
     	return repo.save(quiz);
     }
     

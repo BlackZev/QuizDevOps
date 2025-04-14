@@ -17,20 +17,15 @@ public class QuestionEntity {
     private Long id;
     private String content;
 
-    
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<AnswerEntity> answers;
-    
     @ManyToOne
     private QuizEntity quiz;
     
     // Constructors
     public QuestionEntity() {}
 
-	public QuestionEntity(String content, QuizEntity quiz, List<AnswerEntity> answers) {
+	public QuestionEntity(String content, QuizEntity quiz) {
 		this.content = content;
 		this.quiz = quiz;
-		this.answers = answers;
 	}
 
 
@@ -41,15 +36,11 @@ public class QuestionEntity {
 	
 	public QuizEntity getQuiz() { return quiz; }
 
-	public List<AnswerEntity> getAnswers() { return answers; }
-
 
 	// Setter
 	public void setId(Long id) { this.id = id; }
 
 	public void setContent(String content) { this.content = content; }
-
-	public void setAnswers(List<AnswerEntity> answers) { this.answers = answers; }
 	
 	public void setQuiz(QuizEntity quiz) { this.quiz = quiz; }
 

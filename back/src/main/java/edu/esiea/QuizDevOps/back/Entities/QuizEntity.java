@@ -1,9 +1,6 @@
 package edu.esiea.QuizDevOps.back.Entities;
 
-import java.util.List;
-
 import edu.esiea.QuizDevOps.back.Enums.ETheme;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class QuizEntity {
@@ -25,18 +21,14 @@ public class QuizEntity {
 
     @ManyToOne
     private UserEntity creator;
-
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-    private List<QuestionEntity> questions;
     
     
     // Constructors
     public QuizEntity() {}
-    public QuizEntity(String name, ETheme theme, UserEntity creator, List<QuestionEntity> questions) {
+    public QuizEntity(String name, ETheme theme, UserEntity creator) {
 		this.name = name;
 		this.theme = theme;
 		this.creator = creator;
-		this.questions = questions;
 	}
 
     
@@ -49,8 +41,6 @@ public class QuizEntity {
 
 	public UserEntity getCreator() { return creator; }
 
-	public List<QuestionEntity> getQuestions() { return questions; }
-
 	
 	// Setter
 	public void setId(Long id) { this.id = id; }
@@ -60,6 +50,4 @@ public class QuizEntity {
 	public void setTheme(ETheme theme) { this.theme = theme; }
 
 	public void setCreator(UserEntity creator) { this.creator = creator; }
-
-	public void setQuestions(List<QuestionEntity> questions) { this.questions = questions; }
 }
