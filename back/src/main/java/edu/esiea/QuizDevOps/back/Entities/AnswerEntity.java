@@ -1,10 +1,12 @@
 package edu.esiea.QuizDevOps.back.Entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
+@Entity
 public class AnswerEntity {
 	// Fields
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +28,8 @@ public class AnswerEntity {
 	
 
 	// Getters
+	public Long getId() { return id; }
+	
 	public String getContent() { return content; }
 	
 	public boolean isCorrect() { return isCorrect; }
@@ -34,6 +38,8 @@ public class AnswerEntity {
 	
 	
 	// Setter
+	public void setId(Long id) { this.id = id; }
+	
 	public void setContent(String content) { this.content = content; }
 	
 	public void setCorrect(boolean isCorrect) { this.isCorrect = isCorrect; }
