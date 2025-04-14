@@ -17,7 +17,7 @@ public class QuestionService {
 		this.repo = repo ;
 	}
 	
-    public QuestionEntity createQuestion(QuestionEntity question) {
+    public QuestionEntity create(QuestionEntity question) {
         return repo.save(question);
     }
 

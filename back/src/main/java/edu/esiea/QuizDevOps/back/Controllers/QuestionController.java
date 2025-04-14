@@ -22,7 +22,7 @@ public class QuestionController {
 
     @PostMapping("/create")
     public QuestionEntity create(@RequestBody QuestionEntity question) {
-        return service.createQuestion(question);
+        return service.create(question);
     }
     
     @GetMapping("/quizId/{id}")
