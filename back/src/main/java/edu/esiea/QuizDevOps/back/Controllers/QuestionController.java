@@ -25,7 +25,7 @@ public class QuestionController {
         return service.create(question);
     }
     
-    @GetMapping("/quizId/{id}")
+    @GetMapping("/quizId/{quizId}")
     public List<QuestionEntity> readByQuizId(@PathVariable Long quizId) {
         return service.readByQuizId(quizId);
     }
