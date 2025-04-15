@@ -1,0 +1,37 @@
+version: "3.8"
+
+services: # nom des services en minuscules
+  YelpEaFront:
+    image: front #lien docker hub front
+    ports:
+      - 80:4200 #machine:conteneur
+      
+
+  YelpEaBack:
+    image: back #lien docker hub back
+    ports:
+      - 8080:8080 #machine:conteneur
+    depends_on: # indique le DB doit être UP avant de lancer le conteneur
+      mysqldb:
+        condition: service_healthy
+
+  mysqldb: # alias réseau, 
+    image: mysql:8.0  #image à lancerports:
+    ports:
+      - 3314:3306
+    volumes: # on ne peut écrire pas dans un conteneur => allow un volume
+      - msg-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_USER: $${{secrets.DB_ROOT_USERNAME}}
+      MYSQL_ROOT_PASSWORD: $${{secrets.DB_ROOT_PASSWORD}}
+      MYSQL_DATABASE: $${{secrets.DB_DATABASE}}
+    
+          #Vérification que la base est bien up 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:  # volume persistant
+  msg-mysql-data:
