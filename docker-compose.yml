@@ -1,13 +1,7 @@
 version: "3.8"
 
-services: # nom des services en minuscules
-  YelpEaFront:
-    image: front #lien docker hub front
-    ports:
-      - 80:4200 #machine:conteneur
-      
-
-  YelpEaBack:
+services: # nom des services en minuscules   
+  back:
     image: back #lien docker hub back
     ports:
       - 8080:8080 #machine:conteneur
